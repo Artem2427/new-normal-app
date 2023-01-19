@@ -1,16 +1,17 @@
 import React, { FC, PropsWithChildren } from 'react';
-import { Button, Layout as LayoutWrapper } from 'antd';
-import CustomSider from '../sider';
+import { Layout as LayoutWrapper } from 'antd';
 
-const { Sider, Header, Content } = LayoutWrapper;
+import CustomSider from './sider';
+import CustomHeader from './header';
+import CustomContent from './content';
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <LayoutWrapper style={{ minHeight: '100vh' }}>
-      <Header style={{ width: '100%' }}>Logo</Header>
+      <CustomHeader />
       <LayoutWrapper>
         <CustomSider />
-        <Content style={{ padding: '0 24px', minHeight: 280 }}>Content</Content>
+        <CustomContent>{children}</CustomContent>
       </LayoutWrapper>
     </LayoutWrapper>
   );

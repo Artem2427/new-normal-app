@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ListShades = () => {
-  return <div></div>;
+  return <div>List</div>;
 };
 
 export default ListShades;

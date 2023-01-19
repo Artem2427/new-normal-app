@@ -12,7 +12,9 @@ const initialState: AppContextModel = {
 export const AppContext = createContext(initialState);
 
 const AppProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [appContext, setAppContext] = useState(initialState.appContext);
+  const [appContext, setAppContext] = useState<AppContextInitialState>(
+    initialState.appContext,
+  );
 
   return (
     <AppContext.Provider value={{ appContext, setAppContext }}>
