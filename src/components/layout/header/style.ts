@@ -14,6 +14,7 @@ const useStyles = createUseStyles({
       fontSize: '28px',
       fontWeight: '700',
       color: PALETTE.white,
+      cursor: 'pointer',
     },
 
     '& .container': {

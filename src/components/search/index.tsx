@@ -4,9 +4,11 @@ import { Input } from 'antd';
 import useStyles from './style';
 import { AppContext } from '../../context';
 import { AppContextInitialState } from '../../types/context';
+import { useParams } from 'react-router-dom';
 
 const Search = () => {
   const classes = useStyles();
+  const { shadeId } = useParams<string>();
   const {
     appContext: { searchTerm },
     setAppContext,
@@ -24,6 +26,7 @@ const Search = () => {
       className={classes.root}
       placeholder='Search'
       value={searchTerm}
+      disabled={!!shadeId}
       onChange={handleChange}
     />
   );

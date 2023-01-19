@@ -3,7 +3,7 @@ import { PALETTE } from '../../../utils/constants';
 
 const useStyles = createUseStyles({
   root: {
-    padding: '20px 24px 0',
+    padding: '20px 24px',
     background: PALETTE.content_bg,
   },
 });

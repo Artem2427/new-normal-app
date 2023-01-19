@@ -4,3 +4,8 @@ export interface IPaginateShades {
   searchTerm: string;
   colorIds: string[];
 }
+
+export interface IPaginateOption {
+  page: number;
+  pageSize: number;
+}

@@ -6,22 +6,28 @@ import { IColor } from '../../../types/color';
 import { colorService } from '../../../service/color-service';
 import { AppContext } from '../../../context';
 import { AppContextInitialState } from '../../../types/context';
+import { useParams } from 'react-router-dom';
 
 const { Sider } = Layout;
 
 const CustomSider = () => {
   const classes = useStyles();
+  const { shadeId } = useParams<string>();
 
   const { appContext, setAppContext } = useContext(AppContext);
 
-  const [colors, setColors] = useState<IColor[]>([]);
+  const [colors, setColors] = useState<IColor[]>([
+    { id: '345465645', name: 'test' },
+  ]);
   const [randomColor, setRandomColor] = useState<IColor | null>(null);
 
   const fetchColors = async () => {
     try {
       const response = await colorService.getAllColors();
       setColors(response.colors);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChooseRandomColor = () => {
@@ -57,12 +63,17 @@ const CustomSider = () => {
 
   return (
     <Sider className={classes.root}>
-      <Button onClick={handleChooseRandomColor} className='button'>
+      <Button
+        onClick={handleChooseRandomColor}
+        className='button'
+        disabled={!!shadeId}
+      >
         Random Color
       </Button>
       <div className='menu'>
         {colors.map((color) => (
           <Checkbox
+            disabled={!!shadeId}
             className='menu-item'
             onChange={() => handleChooseColor(color.id)}
             key={color.id}
