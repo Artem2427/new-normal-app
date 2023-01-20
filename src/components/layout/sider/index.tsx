@@ -20,9 +20,7 @@ const CustomSider: FC<Props> = ({ breakpoint, className }) => {
 
   const { appContext, setAppContext } = useContext(AppContext);
 
-  const [colors, setColors] = useState<IColor[]>([
-    { id: '345465645', name: 'test' },
-  ]);
+  const [colors, setColors] = useState<IColor[]>([]);
   const [randomColor, setRandomColor] = useState<IColor | null>(null);
 
   const fetchColors = async () => {
