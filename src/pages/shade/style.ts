@@ -7,9 +7,19 @@ const useStyles = createUseStyles({
 
     '& .wrapper': {
       display: 'grid',
-      gridTemplateColumns: '1fr 1fr 1fr 1fr',
       marginTop: '20px',
+      gridTemplateColumns: '1fr 1fr 1fr 1fr',
       gap: '20px',
+
+      '@media screen and (max-width: 768px)': {
+        gridTemplateColumns: '1fr 1fr',
+      },
+
+      '&.open': {
+        '@media screen and (max-width: 525px)': {
+          gridTemplateColumns: '1fr',
+        },
+      },
     },
 
     '& .button-block': {

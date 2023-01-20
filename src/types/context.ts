@@ -6,4 +6,5 @@ export interface AppContextModel {
 export interface AppContextInitialState {
   searchTerm: string;
   colorIds: string[];
+  isBurgerMenuOpen: boolean;
 }

@@ -5,6 +5,7 @@ const initialState: AppContextModel = {
   appContext: {
     searchTerm: '',
     colorIds: [],
+    isBurgerMenuOpen: false,
   },
   setAppContext: (appContext: AppContextInitialState) => appContext,
 };

@@ -1,5 +1,4 @@
 export const SEARCH_DEBOUNCE_DELAY = 500;
-// const searchTerm = useDebounce(searchQuery, SEARCH_DEBOUNCE_DELAY);
 
 export const Routes = {
   List: '/',
@@ -11,4 +10,5 @@ export const PALETTE = {
   sider: '#8f8f8f',
   content_bg: '#f2f2f2',
   white: '#ffffff',
+  black: '#000000',
 };

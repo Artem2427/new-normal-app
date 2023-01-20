@@ -7,10 +7,10 @@ import CustomContent from './content';
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <LayoutWrapper style={{ minHeight: '100vh' }}>
+    <LayoutWrapper style={{ minHeight: '100vh', position: 'relative' }}>
       <CustomHeader />
       <LayoutWrapper>
-        <CustomSider />
+        <CustomSider breakpoint='md' />
         <CustomContent>{children}</CustomContent>
       </LayoutWrapper>
     </LayoutWrapper>

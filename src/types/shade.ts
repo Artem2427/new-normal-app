@@ -6,3 +6,8 @@ export interface IShade {
   colorId: string;
   color?: IColor;
 }
+
+export interface IShadesPaginate {
+  shades: IShade[];
+  total: number;
+}

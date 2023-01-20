@@ -1,18 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Button, Checkbox, Layout, Menu, Modal } from 'antd';
+import React, { FC, useContext, useEffect, useState } from 'react';
+import { Button, Checkbox, Layout, Modal } from 'antd';
+import cn from 'classnames';
 
 import useStyles from './style';
 import { IColor } from '../../../types/color';
 import { colorService } from '../../../service/color-service';
 import { AppContext } from '../../../context';
 import { AppContextInitialState } from '../../../types/context';
-import { useParams } from 'react-router-dom';
 
 const { Sider } = Layout;
 
-const CustomSider = () => {
+interface Props {
+  breakpoint?: 'md';
+  className?: string;
+}
+
+const CustomSider: FC<Props> = ({ breakpoint, className }) => {
   const classes = useStyles();
-  const { shadeId } = useParams<string>();
 
   const { appContext, setAppContext } = useContext(AppContext);
 
@@ -50,6 +54,15 @@ const CustomSider = () => {
     setRandomColor(null);
   };
 
+  const handleClickOnBurger = (collapsed: boolean) => {
+    setAppContext((prev: AppContextInitialState) => {
+      return {
+        ...prev,
+        isBurgerMenuOpen: !collapsed,
+      };
+    });
+  };
+
   const handleAddColor = () => {
     if (randomColor) {
       handleChooseColor(randomColor.id);
@@ -62,18 +75,24 @@ const CustomSider = () => {
   }, []);
 
   return (
-    <Sider className={classes.root}>
-      <Button
-        onClick={handleChooseRandomColor}
-        className='button'
-        disabled={!!shadeId}
-      >
+    <Sider
+      className={cn(classes.root, className)}
+      breakpoint={breakpoint}
+      collapsedWidth={!!breakpoint ? '0' : undefined}
+      onCollapse={handleClickOnBurger}
+    >
+      <Button onClick={handleChooseRandomColor} className='button'>
         Random Color
       </Button>
+      {colors.length && (
+        <h3 style={{ marginTop: '10px', fontWeight: 600, fontSize: '24px' }}>
+          Colors
+        </h3>
+      )}
+
       <div className='menu'>
         {colors.map((color) => (
           <Checkbox
-            disabled={!!shadeId}
             className='menu-item'
             onChange={() => handleChooseColor(color.id)}
             key={color.id}

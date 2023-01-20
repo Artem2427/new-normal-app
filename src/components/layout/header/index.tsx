@@ -1,8 +1,10 @@
 import React from 'react';
 import { Layout } from 'antd';
-import useStyles from './style';
+
 import Search from '../../search';
 import { useNavigate } from 'react-router-dom';
+
+import useStyles from './style';
 
 const { Header } = Layout;
 
@@ -16,6 +18,7 @@ const CustomHeader = () => {
         <span className='logo' onClick={() => navigate('/')}>
           Logo
         </span>
+
         <Search />
       </div>
     </Header>
